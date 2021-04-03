@@ -61,20 +61,15 @@ def hand_value(cards):
     for card in cards:
         if card[1] == "jack" or card[1] == "queen" or card[1] == "king":
             cards_sum += 10
-        
         elif card[1] == "ace":
             ace = True
-            cards_sum += 1
-                    
-            
+            cards_sum += 1     
         else:
             cards_sum += int(card[1])
         
     if ace and cards_sum + 10 <= 21:
         cards_sum += 10
 
-    
-    #print(cards_sum)
     return cards_sum
 
 
@@ -103,10 +98,6 @@ def computer(computer_cards, cards_player_sum):
 
 def main():
 
-    
-
-    
-
     rounds = 1
     score = [0, 0]
 
@@ -122,14 +113,10 @@ def main():
             print("\n***CONGRATULATIONS***. You won the round!!!")
             print("Nice play.")
             result = 'player'
-            
-        
         elif cards_player_sum > 21:
             print("\nYou lost.")
             print("Dont worry.")
             result = 'computer'
-            
-        
         else:
             cards_computer_sum = computer(computer_cards,cards_player_sum)
             if cards_computer_sum > 21:
@@ -159,7 +146,6 @@ def main():
         for card in player_cards:
             deck.add(card)
 
-        
         for card in computer_cards:
             deck.add(card)
         
