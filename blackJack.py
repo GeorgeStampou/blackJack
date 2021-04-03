@@ -28,7 +28,6 @@ def player(player_cards):
     sum_hand = hand_value(player_cards)   
     
 
-   
     while True:
         print(f"\nYour total sum is: {sum_hand}.")
         if sum_hand == 21:
@@ -63,12 +62,13 @@ def hand_value(cards):
             cards_sum += 10
         elif card[1] == "ace":
             ace = True
-            cards_sum += 1     
+            cards_sum += 1
         else:
             cards_sum += int(card[1])
         
     if ace and cards_sum + 10 <= 21:
         cards_sum += 10
+
 
     return cards_sum
 
@@ -108,26 +108,26 @@ def main():
         player_cards = set()
         computer_cards = set()
         
-        cards_player_sum = player(player_cards)
-        if(cards_player_sum == 21):
+        player_cards_sum = player(player_cards)
+        if(player_cards_sum == 21):
             print("\n***CONGRATULATIONS***. You won the round!!!")
             print("Nice play.")
             result = 'player'
-        elif cards_player_sum > 21:
+        elif player_cards_sum > 21:
             print("\nYou lost.")
             print("Dont worry.")
             result = 'computer'
         else:
-            cards_computer_sum = computer(computer_cards,cards_player_sum)
-            if cards_computer_sum > 21:
+            computer_cards_sum = computer(computer_cards,player_cards_sum)
+            if computer_cards_sum > 21:
                 print("\nComputer is out.")
                 print("***CONGRATULATIONS***. You won the round!!!")
                 result = 'player'
             else:
-                if cards_computer_sum > cards_player_sum:
+                if computer_cards_sum > player_cards_sum:
                     print("\nComputer won!")
                     result = 'computer'
-                if cards_computer_sum == cards_player_sum:
+                if computer_cards_sum == player_cards_sum:
                     print("\nDeuce.")
                     result = 'deuce'
 
@@ -149,7 +149,7 @@ def main():
         for card in computer_cards:
             deck.add(card)
         
-        #thelei while true edw gia ton elegxo
+        
         while True:
             choice = input("\nDo you want to play again? ('y': yes, 'n': no) ")
             if choice == 'y':
